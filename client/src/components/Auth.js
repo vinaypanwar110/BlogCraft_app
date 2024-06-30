@@ -6,6 +6,7 @@ import { authActions } from "../store";
 import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
+  const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8080/api';
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const Auth = () => {
 
   const sendRequest = async (type = "signin") => {
     const res = await axios
-      .post(`http://localhost:8000/api/user/${type}`, {
+      .post(`${backendBaseUrl}/user/${type}`, {
         name: inputs.name,
         email: inputs.email,
         password: inputs.password,

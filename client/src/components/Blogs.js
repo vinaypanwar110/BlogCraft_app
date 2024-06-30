@@ -3,10 +3,11 @@ import axios from "axios";
 import Blog from "./Blog";
 
 function Blogs() {
+  const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8080/api';
   const [blogs, setBlogs] = useState();
   const sendRequest = async () => {
     const res = await axios
-      .get("http://localhost:8000/api/blog")
+      .get(`${backendBaseUrl}/blog`)
       .catch((err) => console.log(err));
 
     const data = await res.data;

@@ -6,6 +6,7 @@ import { Box, InputLabel, TextField, Typography, Button } from "@mui/material";
 const labelStyle = { mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" };
 
 const AddBlog = () => {
+  const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8080/api';
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     title: "",
@@ -22,7 +23,7 @@ const AddBlog = () => {
 
   const sendRequest = async (type = "signin") => {
     const res = await axios
-      .post("http://localhost:8000/api/blog/add", {
+      .post(`${backendBaseUrl}/blog/add`, {
         title: inputs.title,
         content: inputs.content,
         image: inputs.image,

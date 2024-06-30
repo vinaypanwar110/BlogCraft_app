@@ -17,6 +17,7 @@ import {
 import axios from "axios";
 
 const Blog = ({ title, content, image, userName, isUser, id }) => {
+  const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8080/api';
   const navigate = useNavigate();
   const handleEdit = (event) => {
     navigate(`/myBlogs/${id}`);
@@ -24,7 +25,7 @@ const Blog = ({ title, content, image, userName, isUser, id }) => {
 
   const deleteRequest = async () => {
     const res = await axios
-      .delete(`http://localhost:8000/api/blog/${id}`)
+      .delete(`${backendBaseUrl}/blog/${id}`)
       .catch((err) => console.log(err));
 
     const data = res.data;

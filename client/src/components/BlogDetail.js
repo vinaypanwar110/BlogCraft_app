@@ -5,6 +5,7 @@ import { Box, InputLabel, TextField, Typography, Button } from "@mui/material";
 
 const labelStyle = { mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" };
 function BlogDetail() {
+  const backendBaseUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8080/api';
   const navigate = useNavigate();
   const [blog, setBlog] = useState();
   const id = useParams().id;
@@ -20,7 +21,7 @@ function BlogDetail() {
 
   const fetchDetails = async () => {
     const res = await axios
-      .get(`http://localhost:8000/api/blog/${id}`)
+      .get(`${backendBaseUrl}/blog/${id}`)
       .catch((err) => console.log(err));
 
     const data = res.data;
@@ -47,7 +48,7 @@ function BlogDetail() {
 
   const sendRequest = async () => {
     const res = await axios
-      .put(`http://localhost:8000/api/blog/update/${id}`, {
+      .put(`${backendBaseUrl}/blog/update/${id}`, {
         title: inputs.title,
         content: inputs.content,
         image: inputs.image,
