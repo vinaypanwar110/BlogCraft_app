@@ -4,8 +4,12 @@ import dotenv from "dotenv";
 import blogRouter from "./routes/blog-routes.js";
 import router from "./routes/user-routes.js";
 import cors from "cors";
+import bcrypt from "bcryptjs";
 
 dotenv.config();
+console.log("Environment Variables Loaded:");
+console.log(`DATABASE_URL: ${process.env.DATABASE_URL}`);
+
 const app = express();
 app.use(cors());
 app.use(express.json());
