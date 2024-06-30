@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/user", router);
 app.use("/api/blog", blogRouter);
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 
 mongoose
   .connect(process.env.DATABASE_URL)
