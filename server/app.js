@@ -15,8 +15,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/user", router);
-app.use("/api/blog", blogRouter);
+app.use("/user", router);
+app.use("/blog", blogRouter);
 
 const PORT = process.env.PORT || 8080;
 
